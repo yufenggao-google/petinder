@@ -1,39 +1,19 @@
-# React Starter Kit
+# Petinder
+
+Petinder is a pet adoption application designed to help people find their perfect pet match.
 
 <a href="https://github.com/kriasoft/react-starter-kit?sponsor=1"><img src="https://img.shields.io/badge/-GitHub-%23555.svg?logo=github-sponsors" height="20"></a>
 <a href="https://discord.gg/2nKEnKq"><img src="https://img.shields.io/discord/643523529131950086?label=Chat" height="20"></a>
-<a href="https://github.com/kriasoft/react-starter-kit/stargazers"><img src="https://img.shields.io/github/stars/kriasoft/react-starter-kit.svg?style=social&label=Star&maxAge=3600" height="20"></a>
-<a href="https://x.com/ReactStarter"><img src="https://img.shields.io/twitter/follow/ReactStarter.svg?style=social&label=Follow&maxAge=3600" height="20"></a>
 
-Building modern web applications shouldn't require weeks of configuration hell. This React Starter Kit eliminates the tedious setup work so you can focus on what matters: shipping great products.
+## About
 
-Designed for developers who value both speed and quality, this template provides a complete foundation for full-stack applications. From solo projects to team collaborations, it scales with your ambitions while maintaining the developer experience you deserve.
+Petinder simplifies the pet adoption process by matching potential adopters with pets based on compatibility. Built with modern web technologies, it offers a fast, responsive, and user-friendly experience.
 
-React Starter Kit is proudly supported by these amazing sponsors:
+## Features
 
-<a href="https://reactstarter.com/s/1"><img src="https://reactstarter.com/s/1.png" height="60" /></a>&nbsp;&nbsp;<a href="https://reactstarter.com/s/2"><img src="https://reactstarter.com/s/2.png" height="60" /></a>&nbsp;&nbsp;<a href="https://reactstarter.com/s/3"><img src="https://reactstarter.com/s/3.png" height="60" /></a>
-
-## What You Get
-
-- **Performance by Default**: Bun runtime delivers exceptional speed across development and production. Your build times will thank you.
-- **Type Safety Throughout**: TypeScript and tRPC create an unbreakable contract between frontend and backend. Catch errors at compile time, not in production.
-- **Modern React Stack**: React 19 with TanStack Router provides type-safe navigation and powerful data fetching patterns. Tailwind CSS v4 handles styling with zero configuration.
-- **Edge-Native Deployment**: Cloudflare Workers ensure your app runs close to users worldwide. Experience sub-100ms response times globally.
-- **Database Ready**: Drizzle ORM with Neon PostgreSQL provides a complete data layer. Multi-tenant support included out of the box.
-- **Developer Experience**: ESLint, Prettier, and VSCode configurations eliminate bikeshedding. Focus on features, not formatting.
-
-## Perfect For
-
-- **SaaS Applications**: Multi-tenant architecture with user management built-in
-- **API-First Products**: tRPC provides excellent developer experience for API development
-- **Global Applications**: Edge deployment ensures fast loading times worldwide
-- **Team Projects**: Monorepo structure scales well with multiple developers
-- **Rapid Prototyping**: Skip configuration and start building features immediately
-
----
-
-This project was bootstrapped with [React Starter Kit](https://github.com/kriasoft/react-starter-kit).
-Be sure to join our [Discord channel](https://discord.gg/2nKEnKq) for assistance.
+- **Pet Matching**: Browse and match with pets available for adoption.
+- **User Profiles**: Create profiles for adopters and shelters.
+- **Real-time Updates**: Get instant notifications and updates.
 
 ## Technology Stack
 
@@ -71,40 +51,28 @@ Be sure to join our [Discord channel](https://discord.gg/2nKEnKq) for assistance
 
 ## Monorepo Architecture
 
-This starter kit uses a thoughtfully organized monorepo structure that promotes code reuse and maintainability:
+This project uses a monorepo structure:
 
-- [`apps/app/`](./apps/app) — React 19 application with TanStack Router, Jotai, and Tailwind CSS v4
-- [`apps/web/`](./apps/web) — Astro marketing website for static site generation
-- [`apps/api/`](./apps/api) — tRPC API server powered by Hono framework for Cloudflare Workers
-- [`apps/email/`](./apps/email) — React Email templates for authentication and transactional emails
-- [`packages/core/`](./packages/core) — Shared TypeScript types and utilities
-- [`packages/ui/`](./packages/ui) — Shared UI components with shadcn/ui management utilities
-- [`packages/ws-protocol/`](./packages/ws-protocol) — WebSocket protocol template with type-safe messaging
-- [`db/`](./db) — Database schemas, migrations, and seed data
-- [`docs/`](./docs) — VitePress documentation site
-- [`infra/`](./infra) — Terraform infrastructure configurations for multi-environment deployment
-- [`scripts/`](./scripts) — Build automation and development tools
-
-**Why Monorepo?** This structure enables seamless code sharing between frontend and backend, ensures type consistency across your entire stack, and simplifies dependency management. When you update a type definition, both client and server stay in sync automatically.
-
-**Deployment Flexibility:** Each app can be deployed independently to Cloudflare Workers for global edge computing, ensuring optimal performance worldwide.
+- [`apps/app/`](./apps/app) — Main React 19 application
+- [`apps/web/`](./apps/web) — Marketing website (Astro)
+- [`apps/api/`](./apps/api) — API server (Hono, tRPC)
+- [`apps/email/`](./apps/email) — Email templates
+- [`packages/`](./packages) — Shared packages (UI, core, etc.)
+- [`db/`](./db) — Database schema and migrations
 
 ## Prerequisites
 
-- [Bun](https://bun.sh/) v1.2+ (replaces Node.js and npm)
-- [VS Code](https://code.visualstudio.com/) with our [recommended extensions](.vscode/extensions.json)
-- [React Developer Tools](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en) browser extension (recommended)
+- [Bun](https://bun.sh/) v1.2+
+- [VS Code](https://code.visualstudio.com/) (recommended)
 - [Cloudflare account](https://dash.cloudflare.com/sign-up) for deployment
 
 ## Quick Start
 
-### 1. Create Your Project
-
-[Generate a new repository](https://github.com/kriasoft/react-starter-kit/generate) from this template, then clone it locally:
+### 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-username/your-project-name.git
-cd your-project-name
+git clone https://github.com/your-username/petinder.git
+cd petinder
 ```
 
 ### 2. Install Dependencies
@@ -188,30 +156,12 @@ bun api:deploy     # Deploy API server
 bun app:deploy     # Deploy main React app
 ```
 
-Your application will be live on your Cloudflare Workers domain within seconds. The edge-first architecture ensures optimal performance regardless of user location.
+## Credits
 
-## Backers 💰
-
-<a href="https://reactstarter.com/b/1"><img src="https://reactstarter.com/b/1.png" height="60" /></a>&nbsp;&nbsp;<a href="https://reactstarter.com/b/2"><img src="https://reactstarter.com/b/2.png" height="60" /></a>&nbsp;&nbsp;<a href="https://reactstarter.com/b/3"><img src="https://reactstarter.com/b/3.png" height="60" /></a>&nbsp;&nbsp;<a href="https://reactstarter.com/b/4"><img src="https://reactstarter.com/b/4.png" height="60" /></a>&nbsp;&nbsp;<a href="https://reactstarter.com/b/5"><img src="https://reactstarter.com/b/5.png" height="60" /></a>&nbsp;&nbsp;<a href="https://reactstarter.com/b/6"><img src="https://reactstarter.com/b/6.png" height="60" /></a>&nbsp;&nbsp;<a href="https://reactstarter.com/b/7"><img src="https://reactstarter.com/b/7.png" height="60" /></a>&nbsp;&nbsp;<a href="https://reactstarter.com/b/8"><img src="https://reactstarter.com/b/8.png" height="60" /></a>
-
-## Contributors 👨‍💻
-
-<a href="https://reactstarter.com/c/1"><img src="https://reactstarter.com/c/1.png" height="60" /></a>&nbsp;&nbsp;<a href="https://reactstarter.com/c/2"><img src="https://reactstarter.com/c/2.png" height="60" /></a>&nbsp;&nbsp;<a href="https://reactstarter.com/c/3"><img src="https://reactstarter.com/c/3.png" height="60" /></a>&nbsp;&nbsp;<a href="https://reactstarter.com/c/4"><img src="https://reactstarter.com/c/4.png" height="60" /></a>&nbsp;&nbsp;<a href="https://reactstarter.com/c/5"><img src="https://reactstarter.com/c/5.png" height="60" /></a>&nbsp;&nbsp;<a href="https://reactstarter.com/c/6"><img src="https://reactstarter.com/c/6.png" height="60" /></a>&nbsp;&nbsp;<a href="https://reactstarter.com/c/7"><img src="https://reactstarter.com/c/7.png" height="60" /></a>&nbsp;&nbsp;<a href="https://reactstarter.com/c/8"><img src="https://reactstarter.com/c/8.png" height="60" /></a>&nbsp;&nbsp;<a href="https://reactstarter.com/c/9"><img src="https://reactstarter.com/c/9.png" height="60" /></a>&nbsp;&nbsp;<a href="https://reactstarter.com/c/10"><img src="https://reactstarter.com/c/10.png" height="60" /></a>&nbsp;&nbsp;<a href="https://reactstarter.com/c/11"><img src="https://reactstarter.com/c/11.png" height="60" /></a>&nbsp;&nbsp;<a href="https://reactstarter.com/c/12"><img src="https://reactstarter.com/c/12.png" height="60" /></a>&nbsp;&nbsp;<a href="https://reactstarter.com/c/13"><img src="https://reactstarter.com/c/13.png" height="60" /></a>
-
-## Contributing
-
-We welcome contributions! Whether you're fixing bugs, improving docs, or proposing new features, check out our [Contributing Guide](.github/CONTRIBUTING.md) to get started.
-
-- [Good first issues](https://github.com/kriasoft/react-starter-kit/issues?q=label:"good+first+issue") for beginners
-- [Discord community](https://discord.gg/2nKEnKq) for help and discussions
-- [Open issues](https://github.com/kriasoft/react-starter-kit/issues) needing attention
+This project was bootstrapped with [React Starter Kit](https://github.com/kriasoft/react-starter-kit).
+Be sure to join the [Discord channel](https://discord.gg/2nKEnKq) for assistance with the starter kit.
 
 ## License
 
 Copyright © 2014-present Kriasoft. This source code is licensed under the MIT license found in the
 [LICENSE](https://github.com/kriasoft/react-starter-kit/blob/main/LICENSE) file.
-
----
-
-<sup>Made with ♥ by Konstantin Tarkus ([@koistya](https://twitter.com/koistya), [blog](https://medium.com/@koistya))
-and [contributors](https://github.com/kriasoft/react-starter-kit/graphs/contributors).</sup>
