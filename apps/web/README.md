@@ -1,6 +1,6 @@
-# Marketing Website
+# Petinder Marketing Site
 
-A modern marketing website built with [Astro](https://astro.build/) for blazing-fast static site generation and deployed to [Cloudflare Workers](https://workers.cloudflare.com/) edge locations worldwide.
+The marketing website for Petinder, built with [Astro](https://astro.build/). It provides information about the Petinder platform, features, and success stories.
 
 ## Tech Stack
 

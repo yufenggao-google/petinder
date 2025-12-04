@@ -1,6 +1,6 @@
-# React Application
+# Petinder App
 
-A modern single-page application built with [React 19](https://react.dev/) and [TanStack Router](https://tanstack.com/router), designed for building type-safe, performant user interfaces with an exceptional developer experience.
+The main application for Petinder, built with [React 19](https://react.dev/) and [TanStack Router](https://tanstack.com/router). This SPA allows users to browse adoptable pets, manage their profiles, and connect with shelters.
 
 ## Tech Stack
 
