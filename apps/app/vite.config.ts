@@ -7,7 +7,10 @@ import { TLSSocket } from "node:tls";
 import { URL, fileURLToPath } from "node:url";
 import { loadEnv } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
+import { dirname, resolve } from "node:path";
 import { defineProject } from "vitest/config";
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const publicEnvVars = [
   "APP_NAME",
@@ -31,6 +34,8 @@ export default defineProject(({ mode }) => {
 
   return {
     cacheDir: fileURLToPath(new URL("../../.cache/vite-app", import.meta.url)),
+
+    root: __dirname,
 
     build: {
       rollupOptions: {
@@ -63,8 +68,8 @@ export default defineProject(({ mode }) => {
     plugins: [
       tsconfigPaths(),
       tanstackRouter({
-        routesDirectory: "./routes",
-        generatedRouteTree: "./lib/routeTree.gen.ts",
+        routesDirectory: resolve(__dirname, "./routes"),
+        generatedRouteTree: resolve(__dirname, "./lib/routeTree.gen.ts"),
         routeFileIgnorePrefix: "-",
         quoteStyle: "single",
         semicolons: false,
