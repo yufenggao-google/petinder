@@ -30,6 +30,7 @@ export default defineProject(({ mode }) => {
   });
 
   return {
+    root: fileURLToPath(new URL(".", import.meta.url)),
     cacheDir: fileURLToPath(new URL("../../.cache/vite-app", import.meta.url)),
 
     build: {
@@ -63,8 +64,10 @@ export default defineProject(({ mode }) => {
     plugins: [
       tsconfigPaths(),
       tanstackRouter({
-        routesDirectory: "./routes",
-        generatedRouteTree: "./lib/routeTree.gen.ts",
+        routesDirectory: fileURLToPath(new URL("./routes", import.meta.url)),
+        generatedRouteTree: fileURLToPath(
+          new URL("./lib/routeTree.gen.ts", import.meta.url),
+        ),
         routeFileIgnorePrefix: "-",
         quoteStyle: "single",
         semicolons: false,
