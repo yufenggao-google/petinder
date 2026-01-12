@@ -8,6 +8,7 @@ import { URL, fileURLToPath } from "node:url";
 import { loadEnv } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 import { defineProject } from "vitest/config";
+import path from "node:path";
 
 const publicEnvVars = [
   "APP_NAME",
@@ -29,7 +30,10 @@ export default defineProject(({ mode }) => {
     process.env[`VITE_${key}`] = env[key];
   });
 
+  const appRoot = fileURLToPath(new URL(".", import.meta.url));
+
   return {
+    root: appRoot, // Ensure root is set to the package directory
     cacheDir: fileURLToPath(new URL("../../.cache/vite-app", import.meta.url)),
 
     build: {
@@ -57,14 +61,14 @@ export default defineProject(({ mode }) => {
     },
 
     css: {
-      postcss: "./postcss.config.js",
+      postcss: path.resolve(appRoot, "./postcss.config.js"),
     },
 
     plugins: [
       tsconfigPaths(),
       tanstackRouter({
-        routesDirectory: "./routes",
-        generatedRouteTree: "./lib/routeTree.gen.ts",
+        routesDirectory: path.resolve(appRoot, "./routes"),
+        generatedRouteTree: path.resolve(appRoot, "./lib/routeTree.gen.ts"),
         routeFileIgnorePrefix: "-",
         quoteStyle: "single",
         semicolons: false,
