@@ -102,8 +102,22 @@ export function isValidRedirectUrl(url: string): boolean {
     return false;
   }
 
+  // [SECURITY] Reject URLs containing backslashes to prevent open redirect attacks
+  // via browser normalization quirks (e.g. /\google.com -> //google.com)
+  if (url.includes("\\")) {
+    return false;
+  }
+
   try {
-    const parsed = new URL(url, window.location.origin);
+    // [SECURITY] Use a deterministic base URL for validation
+    // In browser: use current origin
+    // In server/test: use the first allowed origin or localhost fallback
+    const base =
+      typeof window !== "undefined"
+        ? window.location.origin
+        : authConfig.security.allowedRedirectOrigins[0] || "http://localhost";
+
+    const parsed = new URL(url, base);
     // Check if origin matches allowed origins
     return authConfig.security.allowedRedirectOrigins.includes(parsed.origin);
   } catch {
