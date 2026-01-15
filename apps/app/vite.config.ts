@@ -4,6 +4,7 @@
 import { tanstackRouter } from "@tanstack/router-plugin/vite";
 import react from "@vitejs/plugin-react-swc";
 import { TLSSocket } from "node:tls";
+import { resolve } from "node:path";
 import { URL, fileURLToPath } from "node:url";
 import { loadEnv } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
@@ -21,6 +22,7 @@ const publicEnvVars = [
  * https://vitejs.dev/config/
  */
 export default defineProject(({ mode }) => {
+  const rootDir = fileURLToPath(new URL(".", import.meta.url));
   const envDir = fileURLToPath(new URL("../..", import.meta.url));
   const env = loadEnv(mode, envDir, "");
 
@@ -63,8 +65,8 @@ export default defineProject(({ mode }) => {
     plugins: [
       tsconfigPaths(),
       tanstackRouter({
-        routesDirectory: "./routes",
-        generatedRouteTree: "./lib/routeTree.gen.ts",
+        routesDirectory: resolve(rootDir, "./routes"),
+        generatedRouteTree: resolve(rootDir, "./lib/routeTree.gen.ts"),
         routeFileIgnorePrefix: "-",
         quoteStyle: "single",
         semicolons: false,
