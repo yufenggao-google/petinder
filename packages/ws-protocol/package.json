@@ -10,6 +10,7 @@
     "./package.json": "./package.json"
   },
   "scripts": {
+    "test": "vitest",
     "typecheck": "tsc --noEmit",
     "example": "bun run example.ts"
   },
