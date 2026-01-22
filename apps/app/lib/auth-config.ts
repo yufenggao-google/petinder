@@ -97,6 +97,11 @@ export const authConfig = {
  * @returns true if URL is safe to redirect to
  */
 export function isValidRedirectUrl(url: string): boolean {
+  // Reject URLs with backslashes to prevent open redirect vulnerabilities
+  if (url.includes("\\")) {
+    return false;
+  }
+
   // Only allow relative URLs starting with /
   if (!url.startsWith("/") || url.startsWith("//")) {
     return false;
