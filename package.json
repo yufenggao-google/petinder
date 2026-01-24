@@ -16,7 +16,7 @@
   "scripts": {
     "dev": "bun --filter @repo/web --filter @repo/api --filter @repo/app dev",
     "lint": "eslint --cache --report-unused-disable-directives .",
-    "test": "vitest",
+    "test": "vitest --passWithNoTests",
     "typecheck": "tsc --build",
     "build:types": "tsc --build",
     "build": "bun --filter @repo/email --filter @repo/web --filter @repo/api build",
