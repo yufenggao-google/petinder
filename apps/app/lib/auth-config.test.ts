@@ -2,11 +2,9 @@ import { describe, it, expect, beforeAll } from "vitest";
 import { isValidRedirectUrl } from "./auth-config";
 
 describe("isValidRedirectUrl", () => {
-  const originalLocation = window.location;
-
   beforeAll(() => {
     // Mock window.location if not available (though happy-dom should provide it)
-    if (!window.location) {
+    if (typeof window !== "undefined" && !window.location) {
       Object.defineProperty(global, "window", {
         value: {
           location: {
