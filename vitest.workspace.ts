@@ -10,5 +10,5 @@ import { workspaces } from "./package.json";
  * @see https://vitest.dev/guide/workspace
  */
 export default defineWorkspace(
-  workspaces.filter((name) => !["scripts"].includes(name))
+  workspaces.filter((name) => !["scripts"].includes(name)),
 );
