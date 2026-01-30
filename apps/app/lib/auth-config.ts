@@ -102,8 +102,18 @@ export function isValidRedirectUrl(url: string): boolean {
     return false;
   }
 
+  // Reject URLs containing backslashes to prevent open redirect attacks
+  // through normalization in some environments
+  if (url.includes("\\")) {
+    return false;
+  }
+
   try {
-    const parsed = new URL(url, window.location.origin);
+    const base =
+      typeof window !== "undefined"
+        ? window.location.origin
+        : "http://localhost:5173";
+    const parsed = new URL(url, base);
     // Check if origin matches allowed origins
     return authConfig.security.allowedRedirectOrigins.includes(parsed.origin);
   } catch {
