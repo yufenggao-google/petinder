@@ -10,13 +10,5 @@ import { workspaces } from "./package.json";
  * @see https://vitest.dev/guide/workspace
  */
 export default defineWorkspace(
-  workspaces
-    .filter((name) => !["scripts"].includes(name))
-    .map((name) => ({
-      extends: `./${name}/vite.config.ts`,
-      test: {
-        name,
-        root: `./${name}`,
-      },
-    })),
+  workspaces.filter((name) => !["scripts"].includes(name)),
 );
