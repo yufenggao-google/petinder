@@ -8,8 +8,4 @@ import { defineWorkspace } from "vitest/config";
  *
  * @see https://vitest.dev/guide/workspace
  */
-export default defineWorkspace([
-  "apps/*",
-  "packages/*",
-  "db"
-]);
+export default defineWorkspace(["apps/*", "packages/*", "db"]);
