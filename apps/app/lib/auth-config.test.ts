@@ -1,9 +1,5 @@
 import { describe, it, expect, beforeEach, afterEach } from "vitest";
-import {
-  isValidRedirectUrl,
-  getSafeRedirectUrl,
-  authConfig,
-} from "./auth-config";
+import { isValidRedirectUrl, getSafeRedirectUrl } from "./auth-config";
 
 describe("auth-config security", () => {
   const originalWindow = global.window;
@@ -14,6 +10,7 @@ describe("auth-config security", () => {
       location: {
         origin: "http://localhost:5173",
       },
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } as any;
   });
 
@@ -48,6 +45,7 @@ describe("auth-config security", () => {
 
     it("handles SSR (no window)", () => {
       const tempWindow = global.window;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       delete (global as any).window;
 
       // When window is undefined, window.location.origin throws,
