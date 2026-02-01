@@ -3,7 +3,6 @@ import {
   isValidRedirectUrl,
   getSafeRedirectUrl,
   shouldRefreshSession,
-  authConfig,
 } from "./auth-config";
 
 describe("auth-config", () => {
