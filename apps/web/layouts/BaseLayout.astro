@@ -40,6 +40,18 @@ const {
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={new URL(image, Astro.url)} />
+
+    <script is:inline>
+      if (
+        window.location.protocol === "http:" &&
+        !window.location.host.includes("localhost") &&
+        !window.location.host.includes("127.0.0.1")
+      ) {
+        window.location.replace(
+          "https://" + window.location.host + window.location.pathname
+        );
+      }
+    </script>
   </head>
   <body>
     <div class="min-h-screen flex flex-col">

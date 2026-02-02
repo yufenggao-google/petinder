@@ -13,6 +13,7 @@ export const envSchema = z.object({
   ENVIRONMENT: z.enum(["production", "staging", "preview", "development"]),
   APP_NAME: z.string().default("Example"),
   APP_ORIGIN: z.url(),
+  ALLOWED_ORIGINS: z.string().default("*"),
   DATABASE_URL: z.url(),
   BETTER_AUTH_SECRET: z.string().min(32),
   GOOGLE_CLIENT_ID: z.string(),

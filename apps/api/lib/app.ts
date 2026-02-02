@@ -11,7 +11,10 @@
 
 import { fetchRequestHandler } from "@trpc/server/adapters/fetch";
 import { Hono } from "hono";
+import { cors } from "hono/cors";
+import { secureHeaders } from "hono/secure-headers";
 import type { AppContext } from "./context.js";
+import { rateLimit } from "./rate-limit.js";
 import { router } from "./trpc.js";
 import { organizationRouter } from "../routers/organization.js";
 import { userRouter } from "../routers/user.js";
@@ -24,6 +27,24 @@ const appRouter = router({
 
 // HTTP router
 const app = new Hono<AppContext>();
+
+// Security middleware
+app.use(secureHeaders());
+app.use(
+  "*",
+  cors({
+    origin: (origin, c) => {
+      const allowed =
+        c.env.ALLOWED_ORIGINS?.split(",").map((s: string) => s.trim()) || [];
+      if (allowed.includes("*") || allowed.includes(origin)) {
+        return origin;
+      }
+      return null;
+    },
+    credentials: true,
+  }),
+);
+app.use(rateLimit({ limit: 100, windowMs: 60 * 1000 }));
 
 app.get("/", (c) => c.redirect("/api"));
 
