@@ -20,6 +20,17 @@ const router = createRouter({
   },
 });
 
+// Redirect to HTTPS in production
+if (
+  window.location.protocol === "http:" &&
+  !window.location.host.includes("localhost") &&
+  !window.location.host.includes("127.0.0.1")
+) {
+  window.location.replace(
+    "https://" + window.location.host + window.location.pathname,
+  );
+}
+
 const container = document.getElementById("root");
 const root = createRoot(container!);
 
