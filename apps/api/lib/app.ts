@@ -35,7 +35,7 @@ app.use(
   cors({
     origin: (origin, c) => {
       const allowed =
-        c.env.ALLOWED_ORIGINS?.split(",").map((s) => s.trim()) || [];
+        c.env.ALLOWED_ORIGINS?.split(",").map((s: string) => s.trim()) || [];
       if (allowed.includes("*") || allowed.includes(origin)) {
         return origin;
       }
