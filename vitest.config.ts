@@ -12,6 +12,7 @@ export default defineConfig({
   cacheDir: "./.cache/vitest",
   test: {
     // Dynamically match any project with a vite.config.ts in apps/
+    // This allows adding new apps without updating this file
     projects: ["apps/*/vite.config.ts"],
   },
 });
