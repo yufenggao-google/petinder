@@ -98,12 +98,17 @@ export const authConfig = {
  */
 export function isValidRedirectUrl(url: string): boolean {
   // Only allow relative URLs starting with /
-  if (!url.startsWith("/") || url.startsWith("//")) {
+  // Reject protocol-relative URLs (//) and backslashes (\) to prevent open redirects
+  if (!url.startsWith("/") || url.startsWith("//") || url.includes("\\")) {
     return false;
   }
 
   try {
-    const parsed = new URL(url, window.location.origin);
+    const base =
+      typeof window !== "undefined"
+        ? window.location.origin
+        : "http://localhost:5173";
+    const parsed = new URL(url, base);
     // Check if origin matches allowed origins
     return authConfig.security.allowedRedirectOrigins.includes(parsed.origin);
   } catch {
