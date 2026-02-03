@@ -12,6 +12,8 @@
  * SAFE MODIFICATIONS: All values except api.basePath can be changed.
  * Changing basePath requires updating server routing.
  */
+const appOrigin = import.meta.env.VITE_APP_ORIGIN || "http://localhost:5173";
+
 export const authConfig = {
   // OAuth provider configuration
   oauth: {
@@ -37,9 +39,7 @@ export const authConfig = {
   security: {
     // Allowed redirect origins (prevents open redirect attacks)
     allowedRedirectOrigins: [
-      typeof window !== "undefined"
-        ? window.location.origin
-        : "http://localhost:5173",
+      typeof window !== "undefined" ? window.location.origin : appOrigin,
     ],
     // CSRF token header name
     csrfTokenHeader: "x-csrf-token",
@@ -103,7 +103,9 @@ export function isValidRedirectUrl(url: string): boolean {
   }
 
   try {
-    const parsed = new URL(url, window.location.origin);
+    const base =
+      typeof window !== "undefined" ? window.location.origin : appOrigin;
+    const parsed = new URL(url, base);
     // Check if origin matches allowed origins
     return authConfig.security.allowedRedirectOrigins.includes(parsed.origin);
   } catch {

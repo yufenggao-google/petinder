@@ -63,8 +63,10 @@ export default defineProject(({ mode }) => {
     plugins: [
       tsconfigPaths(),
       tanstackRouter({
-        routesDirectory: "./routes",
-        generatedRouteTree: "./lib/routeTree.gen.ts",
+        routesDirectory: fileURLToPath(new URL("./routes", import.meta.url)),
+        generatedRouteTree: fileURLToPath(
+          new URL("./lib/routeTree.gen.ts", import.meta.url),
+        ),
         routeFileIgnorePrefix: "-",
         quoteStyle: "single",
         semicolons: false,
@@ -99,7 +101,6 @@ export default defineProject(({ mode }) => {
     },
 
     test: {
-      ...{ cache: { dir: "../../.cache/vitest" } },
       environment: "happy-dom",
     },
   };
