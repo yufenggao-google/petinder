@@ -9,9 +9,10 @@ import { defineConfig } from "vitest/config";
  * @see https://vitest.dev/config/
  */
 export default defineConfig({
+  cacheDir: "./.cache/vitest",
   test: {
-    cache: {
-      dir: "./.cache/vitest",
-    },
+    // Dynamically match any project with a vite.config.ts in apps/
+    // This allows adding new apps without updating this file
+    projects: ["apps/*/vite.config.ts"],
   },
 });
