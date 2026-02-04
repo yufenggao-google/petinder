@@ -4,6 +4,7 @@
 import { describe, expect, it } from "vitest";
 import { getSafeRedirectUrl, isValidRedirectUrl } from "./auth-config";
 
+// Unit tests for auth configuration helpers
 describe("isValidRedirectUrl", () => {
   it("should return true for valid relative URLs", () => {
     expect(isValidRedirectUrl("/")).toBe(true);
