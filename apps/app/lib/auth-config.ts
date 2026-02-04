@@ -91,14 +91,15 @@ export const authConfig = {
  * Validates redirect URLs to prevent open redirect attacks
  *
  * SECURITY: Rejects protocol-relative URLs (//example.com) and absolute URLs
- * to external domains. Only relative paths within allowed origins pass.
+ * to external domains. Also rejects URLs containing backslashes to prevent
+ * browser-specific parsing issues. Only relative paths within allowed origins pass.
  *
  * @param url - URL to validate
  * @returns true if URL is safe to redirect to
  */
 export function isValidRedirectUrl(url: string): boolean {
   // Only allow relative URLs starting with /
-  if (!url.startsWith("/") || url.startsWith("//")) {
+  if (!url.startsWith("/") || url.startsWith("//") || url.includes("\\")) {
     return false;
   }
 
