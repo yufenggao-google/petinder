@@ -98,7 +98,7 @@ export const authConfig = {
  */
 export function isValidRedirectUrl(url: string): boolean {
   // Only allow relative URLs starting with /
-  if (!url.startsWith("/") || url.startsWith("//")) {
+  if (!url.startsWith("/") || url.startsWith("//") || url.includes("\\")) {
     return false;
   }
 
